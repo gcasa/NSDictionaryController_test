@@ -9,13 +9,20 @@
 
 @interface AppDelegate ()
 
-@property (strong) IBOutlet NSWindow *window;
+@property NSMutableDictionary *dictionary;
+@property IBOutlet NSWindow *window;
+
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    NSArray *objs = [NSArray arrayWithObjects: @"a", @"b", @"c", nil];
+    NSArray *keys = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
+
+    self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
+    NSLog(@"%@", self.dictionary);
 }
 
 
