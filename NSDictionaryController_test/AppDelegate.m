@@ -11,6 +11,7 @@
 
 @property NSMutableDictionary *dictionary;
 @property IBOutlet NSWindow *window;
+@property IBOutlet NSDictionaryController *dictionaryController;
 
 @end
 
@@ -23,6 +24,14 @@
 
     self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
     NSLog(@"%@", self.dictionary);
+    
+    // Iterate over arrangedObjects...
+    NSDictionaryControllerKeyValuePair *obj = nil;
+    NSEnumerator *en = [[self.dictionaryController arrangedObjects] objectEnumerator];
+    while ((obj = [en nextObject]) != nil)
+    {
+        NSLog(@"%@ => %@", [obj key], [obj value]);
+    }
 }
 
 
