@@ -32,6 +32,13 @@
     {
         NSLog(@"%@ => %@", [obj key], [obj value]);
     }
+    
+    NSLog(@"includedKeys = %@", self.dictionaryController.includedKeys);
+    
+    Class cls = [self.dictionaryController valueClassForBinding:NSContentBinding];
+    NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentBinding);
+    cls = [self.dictionaryController valueClassForBinding:NSContentDictionaryBinding];
+    NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentDictionaryBinding);
 }
 
 
