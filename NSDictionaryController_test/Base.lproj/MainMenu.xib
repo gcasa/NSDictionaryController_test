@@ -23,8 +23,8 @@
         <dictionaryController objectClassName="_NSDictionaryControllerKeyValuePair" id="XhH-kV-P2z">
             <classReference key="objectClass" className="_NSDictionaryControllerKeyValuePair"/>
             <connections>
+                <binding destination="Voe-Tx-rLC" name="includedKeys" keyPath="self.dictionary.allKeys" id="CXQ-ow-Abx"/>
                 <binding destination="Voe-Tx-rLC" name="contentDictionary" keyPath="self.dictionary" id="QlH-Cl-3hu"/>
-                <binding destination="Voe-Tx-rLC" name="includedKeys" keyPath="self.dictionary.keys" id="UwI-50-6sP"/>
             </connections>
         </dictionaryController>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">

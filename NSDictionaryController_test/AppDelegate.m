@@ -39,6 +39,8 @@
     NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentBinding);
     cls = [self.dictionaryController valueClassForBinding:NSContentDictionaryBinding];
     NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentDictionaryBinding);
+    
+    NSLog(@"initialKey =%@, initialValue = %@", self.dictionaryController.initialKey, self.dictionaryController.initialValue);
 }
 
 
