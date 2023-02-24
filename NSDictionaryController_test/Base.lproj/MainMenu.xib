@@ -23,7 +23,7 @@
         <dictionaryController objectClassName="_NSDictionaryControllerKeyValuePair" id="XhH-kV-P2z">
             <classReference key="objectClass" className="_NSDictionaryControllerKeyValuePair"/>
             <connections>
-                <binding destination="Voe-Tx-rLC" name="includedKeys" keyPath="self.dictionary.allKeys" id="CXQ-ow-Abx"/>
+                <binding destination="Voe-Tx-rLC" name="excludedKeys" keyPath="self.excludedKeys" id="NKl-gn-yju"/>
                 <binding destination="Voe-Tx-rLC" name="contentDictionary" keyPath="self.dictionary" id="QlH-Cl-3hu"/>
             </connections>
         </dictionaryController>

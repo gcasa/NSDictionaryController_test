@@ -12,6 +12,7 @@
 @property NSMutableDictionary *dictionary;
 @property IBOutlet NSWindow *window;
 @property IBOutlet NSDictionaryController *dictionaryController;
+@property NSArray *excludedKeys;
 
 @end
 
@@ -22,6 +23,7 @@
     NSArray *objs = [NSArray arrayWithObjects: @"a", @"b", @"c", nil];
     NSArray *keys = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
 
+    self.excludedKeys = @[@"2"];
     self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
     NSLog(@"%@", self.dictionary);
     
@@ -34,7 +36,8 @@
     }
     
     NSLog(@"includedKeys = %@", self.dictionaryController.includedKeys);
-    
+    NSLog(@"excludedKeys = %@", self.dictionaryController.excludedKeys);
+
     Class cls = [self.dictionaryController valueClassForBinding:NSContentBinding];
     NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentBinding);
     cls = [self.dictionaryController valueClassForBinding:NSContentDictionaryBinding];
