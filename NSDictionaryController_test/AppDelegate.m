@@ -51,5 +51,10 @@
     // Insert code here to tear down your application
 }
 
+- (IBAction) addButton: (id)sender
+{
+    NSDictionaryControllerKeyValuePair *kvp = [self.dictionaryController newObject];
+    [self.dictionaryController addObject: kvp];
+}
 
 @end
