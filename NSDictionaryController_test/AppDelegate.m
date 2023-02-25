@@ -13,17 +13,20 @@
 @property IBOutlet NSWindow *window;
 @property IBOutlet NSDictionaryController *dictionaryController;
 @property NSArray *excludedKeys;
+@property NSUInteger value;
 
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
     // Insert code here to initialize your application
     NSArray *objs = [NSArray arrayWithObjects: @"a", @"b", @"c", nil];
     NSArray *keys = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
 
-    self.excludedKeys = @[@"2"];
+    self.value = 1;
+    self.excludedKeys = @[];
     self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
     NSLog(@"%@", self.dictionary);
     
@@ -47,14 +50,29 @@
 }
 
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
     // Insert code here to tear down your application
+}
+
+- (IBAction) excludeButton: (id)sender
+{
+    NSUInteger index = self.value % [self.dictionary.allKeys count]; // % self.value;
+
+    self.excludedKeys = [NSArray arrayWithObject: [self.dictionary.allKeys objectAtIndex: index]];
+    NSLog(@"excludedKeys (local) = %@", self.excludedKeys);
+    self.value++;
 }
 
 - (IBAction) addButton: (id)sender
 {
     NSDictionaryControllerKeyValuePair *kvp = [self.dictionaryController newObject];
     [self.dictionaryController addObject: kvp];
+}
+
+- (IBAction)clearButton:(id)sender
+{
+    self.excludedKeys = @[];
 }
 
 @end

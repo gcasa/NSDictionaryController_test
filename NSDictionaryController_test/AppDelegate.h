@@ -10,6 +10,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 - (IBAction) addButton: (id)sender;
+- (IBAction) excludeButton: (id)sender;
 
 @end
 
