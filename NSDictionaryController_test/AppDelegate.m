@@ -61,6 +61,7 @@
 
     self.excludedKeys = [NSArray arrayWithObject: [self.dictionary.allKeys objectAtIndex: index]];
     NSLog(@"excludedKeys (local) = %@", self.excludedKeys);
+    NSLog(@"excludedKeys (controller) = %@", self.dictionaryController.excludedKeys);
     self.value++;
 }
 
@@ -73,6 +74,8 @@
 - (IBAction)clearButton:(id)sender
 {
     self.excludedKeys = @[];
+    NSLog(@"cleared -> %@", self.excludedKeys);
+    NSLog(@"excludedKeys (controller) = %@", self.dictionaryController.excludedKeys);
 }
 
 @end
