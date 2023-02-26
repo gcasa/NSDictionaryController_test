@@ -23,8 +23,9 @@
     // Iterate over arrangedObjects...
     NSDictionaryControllerKeyValuePair *obj = nil;
     NSEnumerator *en = [[self.dictionaryController arrangedObjects] objectEnumerator];
-    
-    NSLog(@"\n// Start");
+
+    NSLog(@"\n");
+    NSLog(@"// Start");
     while ((obj = [en nextObject]) != nil)
     {
         NSLog(@"%@ => %@", [obj key], [obj value]);
