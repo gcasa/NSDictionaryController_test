@@ -13,7 +13,7 @@
 @property IBOutlet NSWindow *window;
 @property IBOutlet NSDictionaryController *dictionaryController;
 @property NSArray *excludedKeys;
-@property NSUInteger value;
+@property NSUInteger index;
 
 @end
 
@@ -23,10 +23,15 @@
     // Iterate over arrangedObjects...
     NSDictionaryControllerKeyValuePair *obj = nil;
     NSEnumerator *en = [[self.dictionaryController arrangedObjects] objectEnumerator];
+    
+    NSLog(@"\n// Start");
     while ((obj = [en nextObject]) != nil)
     {
         NSLog(@"%@ => %@", [obj key], [obj value]);
     }
+    NSLog(@"// End\n");
+    
+    NSLog(@"local copy = %@", self.dictionary);
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -35,7 +40,7 @@
     NSArray *objs = [NSArray arrayWithObjects: @"a", @"b", @"c", nil];
     NSArray *keys = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
 
-    self.value = 1;
+    self.index = 0;
     self.excludedKeys = @[];
     self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
     NSLog(@"%@", self.dictionary);
@@ -61,13 +66,16 @@
 
 - (IBAction) excludeButton: (id)sender
 {
-    NSUInteger index = self.value % [self.dictionary.allKeys count]; // % self.value;
-
-    self.excludedKeys = [NSArray arrayWithObject: [self.dictionary.allKeys objectAtIndex: index]];
+    self.excludedKeys = [NSArray arrayWithObject: [self.dictionary.allKeys objectAtIndex: self.index]];
     NSLog(@"excludedKeys (local) = %@", self.excludedKeys);
     NSLog(@"excludedKeys (controller) = %@", self.dictionaryController.excludedKeys);
     [self showDictionary];
-    self.value++;
+    self.index++;
+    
+    if (self.index > [[self.dictionary allKeys] count] - 1)
+    {
+        self.index = 0;
+    }
 }
 
 - (IBAction) addButton: (id)sender
