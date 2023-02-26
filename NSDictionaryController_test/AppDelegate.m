@@ -18,6 +18,16 @@
 @end
 
 @implementation AppDelegate
+- (void) showDictionary
+{
+    // Iterate over arrangedObjects...
+    NSDictionaryControllerKeyValuePair *obj = nil;
+    NSEnumerator *en = [[self.dictionaryController arrangedObjects] objectEnumerator];
+    while ((obj = [en nextObject]) != nil)
+    {
+        NSLog(@"%@ => %@", [obj key], [obj value]);
+    }
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -30,14 +40,8 @@
     self.dictionary = [[NSMutableDictionary alloc] initWithObjects:objs forKeys:keys];
     NSLog(@"%@", self.dictionary);
     
-    // Iterate over arrangedObjects...
-    NSDictionaryControllerKeyValuePair *obj = nil;
-    NSEnumerator *en = [[self.dictionaryController arrangedObjects] objectEnumerator];
-    while ((obj = [en nextObject]) != nil)
-    {
-        NSLog(@"%@ => %@", [obj key], [obj value]);
-    }
-    
+    [self showDictionary];
+
     NSLog(@"includedKeys = %@", self.dictionaryController.includedKeys);
     NSLog(@"excludedKeys = %@", self.dictionaryController.excludedKeys);
 
@@ -62,6 +66,7 @@
     self.excludedKeys = [NSArray arrayWithObject: [self.dictionary.allKeys objectAtIndex: index]];
     NSLog(@"excludedKeys (local) = %@", self.excludedKeys);
     NSLog(@"excludedKeys (controller) = %@", self.dictionaryController.excludedKeys);
+    [self showDictionary];
     self.value++;
 }
 
@@ -69,6 +74,7 @@
 {
     NSDictionaryControllerKeyValuePair *kvp = [self.dictionaryController newObject];
     [self.dictionaryController addObject: kvp];
+    [self showDictionary];
 }
 
 - (IBAction)clearButton:(id)sender
@@ -76,6 +82,7 @@
     self.excludedKeys = @[];
     NSLog(@"cleared -> %@", self.excludedKeys);
     NSLog(@"excludedKeys (controller) = %@", self.dictionaryController.excludedKeys);
+    [self showDictionary];
 }
 
 @end
