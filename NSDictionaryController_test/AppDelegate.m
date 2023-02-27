@@ -40,6 +40,7 @@
     // Insert code here to initialize your application
     NSArray *objs = [NSArray arrayWithObjects: @"a", @"b", @"c", nil];
     NSArray *keys = [NSArray arrayWithObjects: @"1", @"2", @"3", nil];
+    Class cls = [self.dictionaryController valueClassForBinding:NSContentBinding];
 
     self.index = 0;
     self.excludedKeys = @[];
@@ -51,11 +52,9 @@
     NSLog(@"includedKeys = %@", self.dictionaryController.includedKeys);
     NSLog(@"excludedKeys = %@", self.dictionaryController.excludedKeys);
 
-    Class cls = [self.dictionaryController valueClassForBinding:NSContentBinding];
     NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentBinding);
     cls = [self.dictionaryController valueClassForBinding:NSContentDictionaryBinding];
-    NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentDictionaryBinding);
-    
+    NSLog(@"valueClass = %@ forBinding = %@", NSStringFromClass(cls), NSContentDictionaryBinding);    
     NSLog(@"initialKey =%@, initialValue = %@", self.dictionaryController.initialKey, self.dictionaryController.initialValue);
 }
 
